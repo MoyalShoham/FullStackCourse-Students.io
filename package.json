@@ -1,0 +1,28 @@
+{
+  "name": "studentio",
+  "version": "1.0.0",
+  "description": "Application for students",
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js",
+    "dev": "nodemon App.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MoyalShoham/FullStackCourse-Students.io.git"
+  },
+  "author": "Shoham Moyal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MoyalShoham/FullStackCourse-Students.io/issues"
+  },
+  "homepage": "https://github.com/MoyalShoham/FullStackCourse-Students.io#readme",
+  "dependencies": {
+    "dotenv": "^16.4.4",
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.3"
+  }
+}
