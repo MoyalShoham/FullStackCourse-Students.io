@@ -19,7 +19,11 @@ const getStudentById = async (req, res) => {
     console.log(req.params);
     try {
         const student = await Student.findById(req.params.id);
-        res.status(200).send(student);
+        if (!student) {
+            return res.status(404).send('Student not found');
+        } else {
+            res.status(200).send(student);
+        }
     } catch (error) {
         res.status(400).send(error.message);
     }
@@ -40,20 +44,19 @@ const putStudents = async (req, res) => {
     let student;
     try {
         student = await Student.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).send(req.params.id);
     } catch (error) {
         res.status(400).send(error.message);    
     }
 
-    res.status(200).send(student);
 };
 const deleteStudents = async (req, res) => {
-    let student;
-    try {
-        student = await Student.findByIdAndDelete(req.params.id);
+    try{
+        await Student.findByIdAndDelete(req.params.id);
+        res.status(200).send();
     } catch (error) {
         res.status(400).send(error.message);
     }
-    res.status(200).send(student);
     
 };
 
