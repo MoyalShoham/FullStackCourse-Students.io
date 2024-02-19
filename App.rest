@@ -1,12 +1,19 @@
 ###
 
-GET http://localhost:3000/student
+GET http://localhost:3000/students
 
 
 ###
 
-POST http://localhost:3000/student
+POST http://localhost:3000/students
+Content-Type: application/json
 
+{
+  "name": "Tamir",
+  "age": 25,
+  "_id": "00000022"
+
+}
 
 ###
 
