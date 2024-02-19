@@ -5,6 +5,11 @@ GET http://localhost:3000/students
 
 ###
 
+GET http://localhost:3000/students?name=Bar hamalshin
+
+
+###
+
 POST http://localhost:3000/students
 Content-Type: application/json
 
@@ -18,10 +23,18 @@ Content-Type: application/json
 ###
 
 
-PUT http://localhost:3000/student
+PUT http://localhost:3000/students/124
+Content-Type: application/json
+
+{
+  "name": "BAR HaShoter",
+  "age": 27,
+  "_id": "124"
+
+}
 
 
 ###
 
 
-DELETE http://localhost:3000/student
+DELETE http://localhost:3000/students/124
