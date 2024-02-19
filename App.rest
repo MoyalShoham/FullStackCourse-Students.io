@@ -5,7 +5,7 @@ GET http://localhost:3000/students
 
 ###
 
-GET http://localhost:3000/students?name=Bar hamalshin
+GET http://localhost:3000/students
 
 
 ###
