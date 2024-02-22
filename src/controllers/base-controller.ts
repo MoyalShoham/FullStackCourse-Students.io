@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import mongoose from 'mongoose';
+import { IStudent } from '../models/student-model';
 
 class BaseController<ModelType>{
 
@@ -24,15 +25,23 @@ class BaseController<ModelType>{
         
     }
     async getById( req: Request, res: Response) {
+        let item: ModelType;
         try {
-            const item = await this.itemModel.findById(req.params.id);
+            if(this.itemModel === mongoose.Model<IStudent>){
+                item = await this.itemModel.findById(req.params.id);
+                console.log('student get by id');
+            } else {
+                item = await this.itemModel.findById(req.params.owner);
+                console.log('post get by owner');
+            }
+            
             if (!item) {
                 return res.status(404).send('not found');
             } else {
                 res.status(200).send(item);
             }
         } catch (error) {
-            res.status(400).send(error.message);
+            res.status(400).send(item);
         }
     }
     async post (req: Request, res: Response) {

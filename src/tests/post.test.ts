@@ -18,20 +18,6 @@ afterAll(async () => {
 });
 
 describe('Post CRUD operations', () => {
-    const posts = [
-        {
-            title: 'Post 1',
-            message: 'Content 1',
-            owner: '127'
-        },
-        {
-            title: 'Post 2',
-            message: 'Content 2',
-            owner: '128'
-        },
-        // More posts...
-    ];
-
     test("POST /post", async () => {
         const res = await request(app)
             .post('/post')
@@ -71,3 +57,16 @@ describe('Post CRUD operations', () => {
     });
 
 });
+const posts = [
+    {
+        title: 'Post 1',
+        message: 'Content 1',
+        owner: '127'
+    },
+    {
+        title: 'Post 2',
+        message: 'Content 2',
+        owner: '128'
+    },
+    // More posts...
+];

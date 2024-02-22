@@ -25,7 +25,7 @@ const initApp =  () => {
                 app.use(bodyParser.urlencoded({ extended: true }));
                 
                 app.use('/students', studentRoute);
-                app.use('/post', postRoute);
+                app.use('/posts', postRoute);
                 
                 resolve(app);
 

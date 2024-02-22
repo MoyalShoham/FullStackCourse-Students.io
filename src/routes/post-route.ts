@@ -5,7 +5,7 @@ import postController from "../controllers/post-controller";
 
 router.get("/", postController.get.bind(postController));
 
-router.get("/:id", postController.getById.bind(postController));
+router.get("/:owner", postController.getById.bind(postController));
 
 router.post("/", postController.post.bind(postController));
 

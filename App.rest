@@ -14,9 +14,9 @@ POST http://localhost:3000/students
 Content-Type: application/json
 
 {
-  "name": "Tamir",
-  "age": 25,
-  "_id": "00000022"
+  "name": "Shoham",
+  "age": 26,
+  "_id": "127"
 
 }
 
@@ -38,3 +38,34 @@ Content-Type: application/json
 
 
 DELETE http://localhost:3000/students/124
+
+
+
+
+
+### 
+
+POST http://localhost:3000/posts
+Content-Type: application/json
+
+{
+  "title": "My Third post",
+  "message": "This is my first post",
+  "owner": 128
+}
+
+
+### 
+
+
+GET http://localhost:3000/posts
+
+
+
+
+### 
+
+
+GET http://localhost:3000/students/127/post
+
+

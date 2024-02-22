@@ -9,6 +9,7 @@ router.get('/:id', studentController.getById.bind(studentController));
 router.post('/', studentController.post.bind(studentController));
 router.put('/:id', studentController.put.bind(studentController));
 router.delete('/:id', studentController.remove.bind(studentController));
+router.get('/:id/posts', studentController.getPostsByStudent);
 
 export default router;
 

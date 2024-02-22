@@ -18,19 +18,7 @@ afterAll(async () => {
 });
 
 describe('Student CRUD operations', () => {
-    const students = [
-        {
-            name: "John",
-            _id: "127",
-            age: 20,
-        },
-        {
-            name: "Jane",
-            _id: "128",
-            age: 21,
-        },
-        // More students...
-    ];
+   
 
     test("POST /students", async () => {
         const res = await request(app)
@@ -71,3 +59,15 @@ describe('Student CRUD operations', () => {
     });
 
 });
+const students = [
+    {
+        name: "John",
+        _id: "127",
+        age: 20,
+    },
+    {
+        name: "Jane",
+        _id: "128",
+        age: 21,
+    }
+];
