@@ -69,3 +69,28 @@ GET http://localhost:3000/posts
 GET http://localhost:3000/students/127/post
 
 
+
+###
+
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "name": "Shoham",
+  "password": "123456",
+  "email": "shohamAtester@gmail.com"
+}
+
+###
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "password": "123456",
+  "email": "moyal.shoham@gmail.com"
+}
+
+###
+
+GET http://localhost:3000/auth/refresh

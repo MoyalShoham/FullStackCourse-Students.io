@@ -19,9 +19,7 @@ afterAll(async () => {
 
 describe('Post CRUD operations', () => {
     test("POST /post", async () => {
-        const res = await request(app)
-            .post('/post')
-            .send(posts[0]);
+        const res = await request(app).post('/post').send(posts[0]);
         expect(res.status).toBe(201);
         expect(res.body.title).toBe(posts[0].title);
     });

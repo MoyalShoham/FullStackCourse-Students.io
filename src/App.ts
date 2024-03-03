@@ -3,6 +3,8 @@ const app = express();
 
 import dotenv from 'dotenv'
 dotenv.config();
+
+import authRoute from './routes/auth-route';
 import studentRoute from './routes/student-route';
 import postRoute  from './routes/post-route';
 
@@ -26,6 +28,7 @@ const initApp =  () => {
                 
                 app.use('/students', studentRoute);
                 app.use('/posts', postRoute);
+                app.use('/auth', authRoute);
                 
                 resolve(app);
 
