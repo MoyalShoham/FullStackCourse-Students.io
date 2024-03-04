@@ -1,1 +1,1 @@
-{"version":3,"file":"student-controller.js","sourceRoot":"","sources":["../../../src/controllers/student-controller.ts"],"names":[],"mappings":";;;;;AAAA,4EAA8C;AAC9C,wEAA+C;AAG/C,MAAM,iBAAiB,GAAG,IAAI,yBAAc,CAAC,uBAAO,CAAC,CAAC;AAGtD,kBAAe,iBAAiB,CAAC"}
+{"version":3,"file":"student-controller.js","sourceRoot":"","sources":["../../../src/controllers/student-controller.ts"],"names":[],"mappings":";;;;;AAAA,4EAA4D;AAC5D,wEAA+C;AAE/C,MAAM,iBAAkB,SAAQ,yBAAwB;IACtD;QACE,KAAK,CAAC,uBAAO,CAAC,CAAC;IACjB,CAAC;CAEF;AAED,kBAAe,IAAI,iBAAiB,EAAE,CAAC"}

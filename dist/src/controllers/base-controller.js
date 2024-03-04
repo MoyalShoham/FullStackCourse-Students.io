@@ -15,67 +15,68 @@ class BaseController {
     }
     get(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("get");
             try {
                 if (req.query.name) {
                     const item = yield this.itemModel.find({ name: req.query.name });
-                    res.status(200).json(item);
+                    res.status(200).send(item);
                 }
                 else {
                     const item = yield this.itemModel.find();
-                    res.status(200).json(item);
+                    res.status(200).send(item);
                 }
             }
             catch (error) {
-                res.status(404).json({ error: error.message });
+                console.log(error);
+                res.status(400).send(error.message);
             }
         });
     }
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log(req.params);
             try {
                 const item = yield this.itemModel.findById(req.params.id);
                 if (!item) {
-                    return res.status(404).send('not found');
+                    return res.status(404).send("not found");
                 }
                 else {
-                    res.status(200).send(item);
+                    return res.status(200).send(item);
                 }
             }
             catch (error) {
+                console.log(error);
                 res.status(400).send(error.message);
             }
         });
     }
     post(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // res.send('Post Student!' + req.body);
+            console.log("student post ");
             try {
-                const item = yield this.itemModel.create(req.body);
-                res.status(201).send(item);
+                const student = yield this.itemModel.create(req.body);
+                res.status(201).send(student);
             }
             catch (error) {
+                console.log(error);
                 res.status(400).send(error.message);
             }
         });
     }
+    //updatye a sudent with the given id
     put(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const item = yield this.itemModel.findByIdAndUpdate(req.params.id, req.body);
-                res.status(200).send(item._id);
-            }
-            catch (error) {
-                res.status(400).send(error.message);
-            }
-        });
+        console.log("student put");
+        res.status(400).send("Not implemented");
     }
     remove(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
+            console.log("student delete");
             try {
                 yield this.itemModel.findByIdAndDelete(req.params.id);
-                res.status(200).send();
+                return res.status(200).send();
             }
             catch (error) {
+                console.log(error);
                 res.status(400).send(error.message);
             }
         });

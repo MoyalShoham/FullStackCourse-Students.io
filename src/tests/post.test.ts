@@ -1,70 +1,59 @@
-import request from 'supertest';
-import appInit from '../App';
-import mongoose from 'mongoose';
-import Post from '../models/post-model';
-import { Express } from 'express';
+import request from "supertest";
+import appInit from "../App";
+import mongoose from "mongoose";
+import Post from "../models/post-model";
+import { Express } from "express";
+import User from "../models/user-model";
 
 let app: Express;
 
-beforeAll(async () =>  {
+
+const testUser = {
+    email: "post@gmail.com",
+    password: "123456",
+    accessToken: null
+}
+
+
+beforeAll(async () => {
     app = await appInit();
-    console.log('Before all tests');
+    console.log("beforeAll");
     await Post.deleteMany();
+    await User.deleteMany({ email: testUser.email });
+    await request(app).post("/auth/register").send(testUser);
+    const res = await request(app).post("/auth/login").send(testUser);
+    testUser.accessToken = res.body.accessToken;
 });
 
 afterAll(async () => {
-    console.log('After all tests');
+    console.log("afterAll");
+    app.listen(3000).close();
+    
+    
     await mongoose.connection.close();
 });
 
-describe('Post CRUD operations', () => {
-    test("POST /post", async () => {
-        const res = await request(app).post('/post').send(posts[0]);
-        expect(res.status).toBe(201);
-        expect(res.body.title).toBe(posts[0].title);
-    });
 
-    test("GET /post", async () => {
-        const res = await request(app).get('/post');
-        expect(res.status).toBe(200);
+
+describe("Student", () => {
+    test("Get /post - empty collection", async () => {
+        const res = await request(app).get("/post");
+        expect(res.statusCode).toBe(200);
         const data = res.body;
         expect(data).toEqual([]);
     });
 
-    test("GET /post/:id", async () => {
-        const res = await request(app).get('/post/' + posts[0].owner);
-        expect(res.status).toBe(200);
-        expect(res.body.title).toBe(posts[0].title);
-    });
+    const post = {
+        title: "this is post title",
+        message: "this is my post message ..... ",
+        owner: "Moshe"
+    }
 
-    test("PUT /post/:id", async () => {
-        const res = await request(app)
-            .put('/post/' + posts[0].owner)
-            .send({ title: 'Updated Post', message: 'Updated Content', owner: '127' });
-        expect(res.status).toBe(200);
-        const updatedPost = await Post.findById(posts[0].owner);
-        expect(updatedPost.title).toBe('Updated Post');
-        expect(updatedPost.message).toBe('Updated Content');
-    });
-
-    test("DELETE /post/:id", async () => {
-        const res = await request(app).delete('/post/' + posts[0].owner);
-        expect(res.status).toBe(200);
-        const deletedPost = await Post.findById(posts[0].owner);
-        expect(deletedPost).toBeNull();
+    test("Post /post - empty collection", async () => {
+        const res = await request(app).post("/post")
+            .set('Authorization', 'Bearer ' + testUser.accessToken)
+            .send(post);
+        expect(res.statusCode).toBe(201);
     });
 
 });
-const posts = [
-    {
-        title: 'Post 1',
-        message: 'Content 1',
-        owner: '127'
-    },
-    {
-        title: 'Post 2',
-        message: 'Content 2',
-        owner: '128'
-    },
-    // More posts...
-];

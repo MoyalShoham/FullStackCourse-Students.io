@@ -5,19 +5,17 @@ GET http://localhost:3000/students
 
 ###
 
-GET http://localhost:3000/students
+GET http://localhost:3000/student
 
 
 ###
 
-POST http://localhost:3000/students
+POST http://localhost:3000/student
 Content-Type: application/json
 
 {
   "name": "Shoham",
-  "age": 26,
-  "_id": "127"
-
+  "age": 26
 }
 
 ###
@@ -45,7 +43,7 @@ DELETE http://localhost:3000/students/124
 
 ### 
 
-POST http://localhost:3000/posts
+POST http://localhost:3000/post
 Content-Type: application/json
 
 {
@@ -88,7 +86,7 @@ Content-Type: application/json
 
 {
   "password": "123456",
-  "email": "moyal.shoham@gmail.com"
+  "email": "shohamAtester@gmail.com"
 }
 
 ###

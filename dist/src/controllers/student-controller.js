@@ -5,6 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const student_model_1 = __importDefault(require("../models/student-model"));
 const base_controller_1 = __importDefault(require("./base-controller"));
-const studentController = new base_controller_1.default(student_model_1.default);
-exports.default = studentController;
+class StudentController extends base_controller_1.default {
+    constructor() {
+        super(student_model_1.default);
+    }
+}
+exports.default = new StudentController();
 //# sourceMappingURL=student-controller.js.map

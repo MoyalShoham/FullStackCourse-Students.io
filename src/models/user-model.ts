@@ -11,7 +11,7 @@ export interface IUser {
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: false
     },
     email: {
         type: String,
@@ -21,8 +21,15 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     }, 
-    id: String,
-    tokens: [String]
+    id: {
+        type: String,
+        required: false
+    },
+
+    tokens: {
+        type: [String],
+        required: false
+    }
 });
 
-export default mongoose.model('User', userSchema);
+export default mongoose.model<IUser>('User', userSchema);

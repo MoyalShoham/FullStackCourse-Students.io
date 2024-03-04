@@ -1,13 +1,18 @@
-import Post, { IPost } from '../models/post-model';
-import baseController from './base-controller';
+import BaseController from "./base-controller";
+import Post, { IPost } from "../models/post-model";
+import { Request, Response } from "express";
 
-// const postController = new baseController<IPost>(Post);
-
-class PostController extends baseController<IPost> {
+class PostController extends BaseController<IPost> {
     constructor() {
         super(Post);
     }
-}
 
+    async post(req: Request, res: Response) {
+        req.body.owner = req.body.user._id;
+        super.post(req, res);
+    }
+
+
+}
 
 export default new PostController();
