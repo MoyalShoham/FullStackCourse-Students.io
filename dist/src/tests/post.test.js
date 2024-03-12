@@ -34,6 +34,7 @@ beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
 }));
 afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
     console.log("afterAll");
+    app.listen(3000).close();
     yield mongoose_1.default.connection.close();
 }));
 describe("Student", () => {

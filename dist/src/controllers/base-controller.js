@@ -34,7 +34,6 @@ class BaseController {
     }
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.params);
             try {
                 const item = yield this.itemModel.findById(req.params.id);
                 if (!item) {
@@ -52,7 +51,6 @@ class BaseController {
     }
     post(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("student post ");
             try {
                 const student = yield this.itemModel.create(req.body);
                 res.status(201).send(student);
@@ -70,7 +68,6 @@ class BaseController {
     }
     remove(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log("student delete");
             try {
                 yield this.itemModel.findByIdAndDelete(req.params.id);
                 return res.status(200).send();

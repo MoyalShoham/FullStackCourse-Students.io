@@ -30,7 +30,7 @@ beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
     app = yield (0, App_1.default)();
     console.log("beforeAll");
     yield user_model_1.default.deleteMany({ email: user.email });
-}));
+}), 30000);
 afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
     console.log("afterAll");
     yield mongoose_1.default.connection.close();
@@ -63,7 +63,7 @@ describe("Auth test", () => {
     test("refresh token", () => __awaiter(void 0, void 0, void 0, function* () {
         const res = yield (0, supertest_1.default)(app).post("/auth/login").send(user);
         expect(res.statusCode).toBe(200);
-        console.log(res.body);
+        // console.log(res.body);
         //const accessToken = res.body.accessToken;
         refreshToken = res.body.refreshToken;
         const res2 = yield (0, supertest_1.default)(app).get("/auth/refresh")

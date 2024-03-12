@@ -31,7 +31,7 @@ beforeAll(() => __awaiter(void 0, void 0, void 0, function* () {
     yield (0, supertest_1.default)(app).post("/auth/register").send(testUser);
     const res = yield (0, supertest_1.default)(app).post("/auth/login").send(testUser);
     testUser.accessToken = res.body.accessToken;
-}));
+}), 5000);
 afterAll(() => __awaiter(void 0, void 0, void 0, function* () {
     console.log("afterAll");
     yield mongoose_1.default.connection.close();

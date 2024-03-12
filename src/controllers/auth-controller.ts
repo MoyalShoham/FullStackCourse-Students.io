@@ -50,6 +50,7 @@ const generateTokens = (userId: string): { accessToken: string, refreshToken: st
         refreshToken: refreshToken
     }
 }
+
 const login = async (req: Request, res: Response) => {
     console.log("login");
 

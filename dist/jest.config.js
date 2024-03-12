@@ -2,7 +2,8 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /** @type {import('ts-jest/dist/types').InitialOptionsTsJest} */
 exports.default = {
-    present: 'ts-jest',
-    testEnvironment: 'node',
+    preset: "ts-jest",
+    testEnvironment: "node",
+    roots: ["<rootDir>/src"],
 };
 //# sourceMappingURL=jest.config.js.map
